@@ -4,7 +4,22 @@ import {Text, View, TouchableOpacity, Image, StyleSheet} from 'react-native';
 export default class Card extends Component {
   render() {
     return (
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity
+        style={styles.container}
+        onPress={() =>
+          this.props.navigation.navigate('Details', {
+            itemId: this.props.info.id,
+            mediumImage:
+              this.props.info.image.medium ||
+              'https://i.ibb.co/YfZFr7k/noimg.png',
+            originalImage: this.props.info.image.original,
+            name: this.props.info.name,
+            genres: this.props.info.genres,
+            status: this.props.info.status,
+            networkName: this.props.info.network.name,
+            summary: this.props.info.summary,
+          })
+        }>
         <View style={styles.cardView}>
           <View>
             <Image
